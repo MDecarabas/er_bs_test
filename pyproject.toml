@@ -10,18 +10,42 @@ readme = "README.md"
 requires-python = ">=3.11"
 keywords = []
 classifiers = []
-dependencies = [ "apsbits"]
+dependencies = [ "apsbits",]
+[[project.authors]]
+name = "Eric Codrea"
+email = "ecodrea@anl.gov"
 
-authors = [
-    { name = "Eric Codrea", email = "ecodrea@anl.gov" },
-    { name = "Pete Jemian", email = "prjemian+instrument@gmail.com" },
-    { name = "Rafael Vescovi", email = "rvescovi@anl.gov" },
-]
-maintainers = [
-    { name = "Eric Codrea", email = "ecodrea@anl.gov" },
-    { name = "Pete Jemian", email = "prjemian+instrument@gmail.com" },
-    { name = "Rafael Vescovi", email = "rvescovi@anl.gov" },
-]
+[[project.authors]]
+name = "Pete Jemian"
+email = "prjemian+instrument@gmail.com"
+
+[[project.authors]]
+name = "Rafael Vescovi"
+email = "rvescovi@anl.gov"
+
+[[project.maintainers]]
+name = "Eric Codrea"
+email = "ecodrea@anl.gov"
+
+[[project.maintainers]]
+name = "Pete Jemian"
+email = "prjemian+instrument@gmail.com"
+
+[[project.maintainers]]
+name = "Rafael Vescovi"
+email = "rvescovi@anl.gov"
+
+[project.license]
+file = "LICENSE"
+
+[project.optional-dependencies]
+dev = [ "build", "isort", "mypy", "pre-commit", "pytest", "ruff",]
+doc = [ "babel", "ipykernel", "jinja2", "markupsafe", "myst_parser", "nbsphinx", "pydata-sphinx-theme", "pygments-ipython-console", "pygments", "sphinx-design", "sphinx-tabs", "sphinx",]
+all = [ "er_bs_test[dev,doc]",]
+
+[project.urls]
+Homepage = "https://BCDA-APS.github.io/BITS/"
+"Bug Tracker" = "https://github.com/BCDA-APS/BITS/issues"
 
 [tool.copyright]
 copyright = "2014-2025, APS"
@@ -47,23 +71,6 @@ line-length = 88
 indent-width = 4
 target-version = "py311"
 
-[project.license]
-file = "LICENSE"
-
-[project.optional-dependencies]
-dev = [ "build", "isort", "mypy", "pre-commit", "pytest", "ruff",]
-doc = [ "babel", "ipykernel", "jinja2", "markupsafe", "myst_parser", "nbsphinx", "pydata-sphinx-theme", "pygments-ipython-console", "pygments", "sphinx-design", "sphinx-tabs", "sphinx",]
-all = [ "er_bs_test[dev,doc]",]
-
-[project.urls]
-Homepage = "https://BCDA-APS.github.io/BITS/"
-"Bug Tracker" = "https://github.com/BCDA-APS/BITS/issues"
-
-[tool.pytest.ini_options]
-addopts = [ "--import-mode=importlib", "-x",]
-junit_family = "xunit1"
-filterwarnings = [ "ignore::DeprecationWarning", "ignore::PendingDeprecationWarning",]
-
 [tool.ruff.lint]
 select = [ "E", "F", "B", "I", "W", "D100", "D101", "D102", "D103", "D104", "D105", "D106", "D107",]
 fixable = [ "ALL",]
@@ -76,11 +83,20 @@ indent-style = "space"
 skip-magic-trailing-comma = false
 line-ending = "auto"
 
+[tool.pytest.ini_options]
+addopts = [ "--import-mode=importlib", "-x",]
+junit_family = "xunit1"
+filterwarnings = [ "ignore::DeprecationWarning", "ignore::PendingDeprecationWarning",]
+
 [tool.setuptools.package-dir]
 "" = "src"
+eric_instrument = "src/eric_instrument"
 
 [tool.setuptools.package-data]
 "*" = [ "*.yml",]
+
+[tool.instruments.eric_instrument]
+path = "src/eric_instrument"
 
 [tool.ruff.lint.per-file-ignores]
 "*.ipynb" = [ "F405",]
